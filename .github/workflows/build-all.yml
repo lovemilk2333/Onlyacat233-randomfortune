@@ -37,7 +37,7 @@ jobs:
             - name: Upload Build Result
               uses: actions/upload-artifact@v4
               with:
-                name: randomfortune
+                name: randomfortune-Windows
                 path: build/randomfortune.zip
 
     # build4Linux:
@@ -72,5 +72,5 @@ jobs:
             - name: Upload Build Result
               uses: actions/upload-artifact@v4
               with:
-                name: randomfortune
+                name: randomfortune-macOS
                 path: build/randomfortune.zip
