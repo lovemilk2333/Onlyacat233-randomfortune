@@ -30,6 +30,12 @@ jobs:
                   channel: beta
             - run: flutter build windows
 
+            - name: Upload Build Result
+              uses: actions/upload-artifact@v3
+              with:
+                name: randomfortune-exe
+                path: build/windows/x64/runner/Release/randomfortune.exe
+
     # build4Linux:
     #     runs-on: ubuntu-latest
     #     steps:
@@ -54,3 +60,9 @@ jobs:
               with:
                   channel: beta
             - run: flutter build macos
+
+            - name: Upload Build Result
+              uses: actions/upload-artifact@v3
+              with:
+                name: randomfortune-app
+                path: build/macos/Build/Products/Release/randomfortune.app
