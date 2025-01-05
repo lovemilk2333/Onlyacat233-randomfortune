@@ -30,11 +30,15 @@ jobs:
                   channel: beta
             - run: flutter build windows
 
+            - name: Create Windows Zip Package
+              run: |
+                powershell Compress-Archive -Path build/windows/x64/runner/Release/randomfortune.exe -DestinationPath build/randomfortune.zip
+
             - name: Upload Build Result
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
-                name: randomfortune-exe
-                path: build/windows/x64/runner/Release/randomfortune.exe
+                name: randomfortune
+                path: build/randomfortune.zip
 
     # build4Linux:
     #     runs-on: ubuntu-latest
@@ -61,8 +65,12 @@ jobs:
                   channel: beta
             - run: flutter build macos
 
+            - name: Create macOS Zip Package
+              run: |
+                zip -r build/randomfortune.zip build/macos/Build/Products/Release/randomfortune.app
+
             - name: Upload Build Result
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
-                name: randomfortune-app
-                path: build/macos/Build/Products/Release/randomfortune.app
+                name: randomfortune
+                path: build/randomfortune.zip
