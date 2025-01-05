@@ -32,13 +32,13 @@ jobs:
 
             - name: Create Windows Zip Package
               run: |
-                powershell Compress-Archive -Path build/windows/x64/runner/Release/randomfortune.exe -DestinationPath build/randomfortune.zip
+                powershell Compress-Archive -Path build/windows/x64/runner/Release/randomfortune.exe -DestinationPath build/randomfortune-Windows.zip
 
             - name: Upload Build Result
               uses: actions/upload-artifact@v4
               with:
                 name: randomfortune-Windows
-                path: build/randomfortune.zip
+                path: build/randomfortune-Windows.zip
 
     # build4Linux:
     #     runs-on: ubuntu-latest
@@ -67,10 +67,10 @@ jobs:
 
             - name: Create macOS Zip Package
               run: |
-                zip -r build/randomfortune.zip build/macos/Build/Products/Release/randomfortune.app
+                zip -r build/randomfortune-macOS.zip build/macos/Build/Products/Release/randomfortune.app
 
             - name: Upload Build Result
               uses: actions/upload-artifact@v4
               with:
                 name: randomfortune-macOS
-                path: build/randomfortune.zip
+                path: build/randomfortune-macOS.zip
